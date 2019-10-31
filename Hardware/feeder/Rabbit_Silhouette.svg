@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.2"
+   width="25.727276"
+   height="26.458248"
+   id="svg3801"
+   sodipodi:docname="Rabbit_Silhouette.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <defs
+     id="defs3805" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1355"
+     id="namedview3803"
+     showgrid="false"
+     inkscape:zoom="21.194347"
+     inkscape:cx="15.708781"
+     inkscape:cy="-4.6423408"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3801" />
+  <metadata
+     id="metadata3798">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title></dc:title>
+        <dc:description>Black Silhouette of the rabbit.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>rabbit</rdf:li>
+            <rdf:li>兔</rdf:li>
+            <rdf:li>silhouette</rdf:li>
+            <rdf:li>new_year</rdf:li>
+            <rdf:li>chinese_new_year</rdf:li>
+            <rdf:li>black</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://www.openclipart.org">
+            <dc:title>Open Clip Art Library</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Jakub Jankiewicz</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Jakub Jankiewicz</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:date />
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://web.resource.org/cc/PublicDomain" />
+        <dc:language>pl</dc:language>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://web.resource.org/cc/PublicDomain">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <path
+     id="rabbit"
+     d="M 14.6285,1.5841148e-4 C 14.14765,-0.00684159 13.77459,0.21813841 13.77459,0.67723841 c 0,0.56504999 -0.14289,2.96643999 0.069,3.74337999 0.2119,0.77695 1.05988,1.91356 1.69487,2.68462 0.49442,0.60037 0.21348,2.04731 0.21348,2.75363 0,0.7063096 -0.14227,1.2722296 -0.4248,1.2722296 -0.28252,0 -0.70507,0.28243 -0.98759,0.56496 -0.28252,0.28252 -0.56544,0.63616 -0.9186,0.35363 -0.35315,-0.28252 -0.98956,-0.56438 -2.11966,-0.77627 -1.13011,-0.2119 -3.03645,-10e-4 -4.23718,0.42264 -1.20073,0.42378 -3.74434,2.75506 -4.45065,3.81453 -0.70631,1.05947 -0.77575,4.30772 -0.70512,4.80213 0.0706,0.49442 -0.14279,0.84859 -0.49595,0.4248 -0.35315,-0.42379 -0.63396,-0.21132 -0.63396,-0.21132 0,0 -0.35364,0.7056 -0.35364,1.05875 0,0.35316 0.14016,0.70512 0.14016,0.70512 0,0 -0.56495,0.42475 -0.56495,0.70728 0,0.28252 0.56544,0.77728 0.91859,1.20107 0.35316,0.42378 1.55409,1.2717 2.04851,1.20107 0.49442,-0.0706 1.41287,-5.9e-4 1.76603,0.21132 0.35316,0.21189 1.20035,0.49433 2.25982,0.56496 1.05947,0.0706 4.02519,0.28248 4.80214,0.28248 0.77694,0 0.99023,-0.14065 1.34339,-0.4938 0.35315,-0.35316 -0.28406,-0.77781 -0.49596,-1.27223 -0.21189,-0.49442 0.70723,-0.35201 0.98975,-0.42264 0.28253,-0.0706 1.06029,-0.56496 1.55471,-0.56496 0.49442,0 0.42308,0.49375 1.05876,0.77628 0.63568,0.28252 1.55351,1.19997 2.25982,1.34123 0.70632,0.14126 2.33089,5.9e-4 2.89595,-0.21132 0.56505,-0.21189 0.49441,-0.7056 0,-1.05875 -0.49442,-0.35316 -1.6943,-0.99024 -1.90619,-1.34339 -0.2119,-0.35316 -0.282,-0.77676 0.0712,-1.12992 0.35315,-0.35316 0.70502,-0.21127 1.27007,-0.4938 0.56505,-0.28252 0.77628,-1.13145 0.77628,-1.62586 0,-0.49442 0.0672,-1.03178 0.28248,-1.34124 0.18036,-0.25931 0.25042,-1.0867 0.26047,-1.65174 0.0107,-0.60338 -0.2599,-0.74873 -0.47179,-1.10188 -0.21189,-0.35316 0.21127,-0.84744 0.49379,-0.84744 0.28253,0 1.55409,-0.2129 2.04851,-0.42479 0.49442,-0.21189 0.99023,-1.13092 1.34339,-1.55471 0.35315,-0.42379 0.0696,-1.34119 -0.4248,-1.62371 -0.49442,-0.28253 -0.49481,-1.0603 -0.91859,-1.5547096 -0.42379,-0.49442 -0.91745,-1.55303 -1.34123,-1.90619 -0.42379,-0.35316 -1.41287,-0.63612 -1.76603,-0.63612 -0.35316,0 -0.56496,5e-5 -0.56496,-0.28248 0,-0.28252 -0.0712,-0.63439 -0.0712,-1.27007 0,-0.63568 -0.79756,-3.36165 -1.83503,-5.01560999 -0.21643,-0.34504 -0.56751,-0.2654 -0.98975,-0.14232 -0.27959,0.0815 -0.42264,0.21387 -0.42264,1.13206999 0,0.91821 -0.56491,-0.002 -0.84743,-0.49595 -0.28253,-0.49441999 -0.77887,-1.05980999 -1.41455,-1.20106999 -0.11919,-0.0265 -0.23405,-0.0393 -0.34501,-0.0409999985 z"
+     style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.04910059"
+     inkscape:connector-curvature="0" />
+</svg>
