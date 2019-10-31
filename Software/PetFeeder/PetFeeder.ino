@@ -2,7 +2,7 @@
 #include "LowPower.h"
 
 #define TWELVEHOURS 5400 
-#define TIMEDEVIDER 1
+#define TIMEDIVIDER 1
 
 int TwelveHourCount = 0;
 
@@ -28,14 +28,14 @@ void loop()
     CLKPR = 0x00;
      
     digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(10000/TIMEDEVIDER);          // wait for 10 second
+    delay(10000/TIMEDIVIDER);          // wait for 10 second
     digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-    delay(1000/TIMEDEVIDER);           // wait for a secon.
+    delay(1000/TIMEDIVIDER);           // wait for a secon.
     TwelveHourCount=0;                 //reset Twelve Hour Counter
 
     /* Set clock speed down to 1 Mhz*/
     CLKPR = 0x80;
-    CLKPR = 0x00;
+    CLKPR = 0x04;
   }
   
   else{
@@ -44,11 +44,11 @@ void loop()
     CLKPR = 0x00;
     
     digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(500/TIMEDEVIDER);            // wait for half second
+    delay(500/TIMEDIVIDER);            // wait for half second
     digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
     
     /* Set clock speed down to 1 Mhz*/
     CLKPR = 0x80;
-    CLKPR = 0x00;
+    CLKPR = 0x04;
     }
 }
