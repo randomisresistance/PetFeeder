@@ -3,3 +3,4 @@ output
 *-bak
 *-cache
 *.net
+*-cache.lib
