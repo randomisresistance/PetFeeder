@@ -1,0 +1,5 @@
+output
+*.tar.gz
+*-bak
+*-cache
+*.net
