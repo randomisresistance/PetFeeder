@@ -14,13 +14,27 @@ void setup()
   
   /*Turn on Blink LED*/
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(5,OUTPUT);
 }
 
 void loop() 
 {
   /*ATmega328P maximum powersaving complete power down for 8 seconds wakup by watchdog*/
-  LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+  //LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
   TwelveHourCount++;
+
+    CLKPR = 0x80;
+    CLKPR = 0x00;
+
+  digitalWrite(5, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH); 
+  delay(1000/TIMEDIVIDER);
+  digitalWrite(5, LOW);
+  digitalWrite(LED_BUILTIN, LOW); 
+  delay(1000/TIMEDIVIDER);
+
+
+  return;
   
   if(TwelveHourCount>=TWELVEHOURS){
     /* Set clock speed back to 16 Mhz*/
