@@ -1,0 +1,13 @@
+Reference, Quantity, Value, Footprint, Datasheet
+A1 ,1,Arduino_Nano_v3.x,Module:Arduino_Nano,http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf
+D2 ,1,D,Diode_THT:D_A-405_P7.62mm_Horizontal,~
+D3 D1 ,2,D_Zener,Diode_THT:D_A-405_P7.62mm_Horizontal,~
+J1 ,1,pump,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal,~
+J2 ,1,power,Connector_USB:USB_Mini-B_Lumberg_2486_01_Horizontal,~
+J3 ,1,button_set,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal,~
+J4 ,1,button_select,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal,~
+J5 ,1,button_reset,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal,~
+J6 ,1,motor,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Horizontal,~
+Q1 ,1,BUZ11,Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown,http://www.fairchildsemi.com/ds/BU/BUZ11.pdf
+R1 ,1,250,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal,~
+R2 R3 R4 R5 R6 ,5,10k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal,~
