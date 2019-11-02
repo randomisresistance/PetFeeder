@@ -41,7 +41,7 @@ void setup()
       valSelectButton = 0;
       AmoutOfServings++;
 
-      if(AmoutOfServings < MAX_ANIMALS_PER_SHED){
+      if(AmoutOfServings > MAX_ANIMALS_PER_SHED){
         AmoutOfServings = 1;
         }
 
@@ -57,7 +57,7 @@ void setup()
     } while(valSelectButton != 1);
 
     valSetButton = digitalRead(setPin);//read pin value for set
-  } while(setPressed != 1);
+  } while(valSetButton != 1);
   
   
   /*Reduce AVR328P to 1 Mhz for powersaving*/
