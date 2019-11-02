@@ -14,20 +14,19 @@ int resetPin  =  29;
 
 /*Pin vars*/
 bool valSelectButton     = 0;   
-bool valSetButton        = 0
+bool valSetButton        = 0;
 
 
 /*Vars*/
 int TwelveHourCount   = 0;
-short AmoutOfServings = 1;
+short AmoutOfServings = 0;
 
-;
 
 void setup()
 {
   /*Set pins*/
   pinMode(selectPin, INPUT);    //Turn on Pin for select button  
-  pinMode(setPin, INPUT)        //Turn on Pin for set button
+  pinMode(setPin, INPUT);        //Turn on Pin for set button
   pinMode(pumpPin, OUTPUT);     //Turn on Pin for water pump
   pinMode(motorPin, OUTPUT);    //Turn on Pin for food dispenser
   pinMode(LED_BUILTIN, OUTPUT); //Turn on Blink LED to show the amout of servings
@@ -40,8 +39,8 @@ void setup()
     {
       valSelectButton = 0;
       AmoutOfServings++;
-
-      if(AmoutOfServings < MAX_ANIMALS_PER_SHED){
+      
+      if(AmoutOfServings > MAX_ANIMALS_PER_SHED){
         AmoutOfServings = 1;
         }
 
@@ -49,11 +48,10 @@ void setup()
       {
        /*LED blinks for selected AmoutOfServings times*/
        digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-       delay(200);                        // wait
+       delay(1000);                        // wait
        digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW  
       }
 
-     AmoutOfServings++;
      valSelectButton = digitalRead(selectPin);  //read pin value for select
     } while(valSelectButton != 1);
 
