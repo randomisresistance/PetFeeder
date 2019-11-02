@@ -41,7 +41,7 @@ void setup()
       valSelectButton = 0;
       AmoutOfServings++;
 
-      if(AmoutOfServings > MAX_ANIMALS_PER_SHED){
+      if(AmoutOfServings < MAX_ANIMALS_PER_SHED){
         AmoutOfServings = 1;
         }
 
@@ -52,7 +52,8 @@ void setup()
        delay(200);                        // wait
        digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW  
       }
-     
+
+     AmoutOfServings++;
      valSelectButton = digitalRead(selectPin);  //read pin value for select
     } while(valSelectButton != 1);
 
