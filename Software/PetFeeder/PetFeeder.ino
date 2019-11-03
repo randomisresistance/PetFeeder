@@ -5,6 +5,10 @@
 #define MAX_ANIMALS_PER_SHED 9
 #define TIMEDIVIDER 1
 
+// sometimes HIGH means LED_OFF, so we use a define here
+#define LED_ON HIGH
+#define LED_OFF LOW
+
 /*Pin setup*/
 int pumpPin   =   5;
 int selectPin =   6;
@@ -19,8 +23,15 @@ bool valSetButton        = 0;
 
 /*Vars*/
 int TwelveHourCount   = 0;
-short AmoutOfServings = 0;
+short AmountOfServings = 0;
 
+
+typedef enum {
+  START,
+  SHOW_VALUE,
+  WAIT,
+  FINISH
+} states_t;
 
 void setup()
 {
@@ -31,25 +42,93 @@ void setup()
   pinMode(motorPin, OUTPUT);    //Turn on Pin for food dispenser
   pinMode(LED_BUILTIN, OUTPUT); //Turn on Blink LED to show the amout of servings
 
-  
   /*Setup amount of servings depending on amount of animals in shed*/
+  states_t state = START;
+  int led_state = LOW;
+  int blinks_shown = 0;
+  unsigned long time = millis();
+  unsigned long last_button_poll = millis();
+  unsigned long now;
+
+  int set_button = 0;
+  int select_button = 0;
+
+  while (state != FINISH) {
+    now = millis();
+    switch(state) {
+      case START:
+        // wait before blinking
+        if(now - time > 1000) {
+          time = now;
+          state = SHOW_VALUE;
+          blinks_shown = 0;
+          led_state = LED_OFF;
+        }
+        break;
+      case SHOW_VALUE:
+        if (led_state == LED_OFF && now - time > 500) {
+          time = now;
+          led_state = LED_ON;
+        }
+        else if(led_state == LED_ON && now - time > 250) {
+          time = now;
+          led_state = LED_OFF;
+          blinks_shown++;
+        }
+        if (blinks_shown == AmountOfServings) {
+          state = WAIT;
+        }
+        break;
+      case WAIT:
+        break;
+    }
+
+    digitalWrite(LED_BUILTIN, led_state);
+
+    // debounce
+    if (now - last_button_poll > 100) {
+      // buttons are low active
+      set_button = (digitalRead(set_button) == LOW);
+      select_button = (digitalRead(selectPin) == LOW);
+
+      if (set_button || select_button) {
+        last_button_poll = now;
+      }
+    }
+
+    if (set_button) {
+      AmountOfServings++;
+
+      if(AmountOfServings > MAX_ANIMALS_PER_SHED)
+        AmountOfServings = 1;
+
+      // restart state machine
+      state = START;
+    }
+    else if (select_button) {
+      state = FINISH;
+      // or just break;
+    }
+  }
+
+
   do
   {
     do
     {
       valSelectButton = 0;
-      AmoutOfServings++;
-      
-      if(AmoutOfServings > MAX_ANIMALS_PER_SHED){
-        AmoutOfServings = 1;
+      AmountOfServings++;
+
+      if(AmountOfServings > MAX_ANIMALS_PER_SHED){
+        AmountOfServings = 1;
         }
 
-      for(int i; AmoutOfServings <= MAX_ANIMALS_PER_SHED; i++)
+      for(int i; AmountOfServings <= MAX_ANIMALS_PER_SHED; i++)
       {
-       /*LED blinks for selected AmoutOfServings times*/
+       /*LED blinks for selected AmountOfServings times*/
        digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
        delay(1000);                        // wait
-       digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW  
+       digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
       }
 
      valSelectButton = digitalRead(selectPin);  //read pin value for select
