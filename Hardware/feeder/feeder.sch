@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -248,20 +248,10 @@ F 3 "" H 3850 5050 50  0001 C CNN
 	1    3850 5050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2850 4400 2150 4400
-Wire Wire Line
-	2150 4050 3200 4050
-Wire Wire Line
-	2850 3750 2150 3750
-Text Label 2150 3750 0    50   ~ 0
-signal_button_set
-Text Label 2150 4050 0    50   ~ 0
+Text Label 2150 4350 0    50   ~ 0
 signal_button_select
-Text Label 2150 4400 0    50   ~ 0
+Text Label 2150 4900 0    50   ~ 0
 signal_button_reset
-Wire Wire Line
-	2850 3800 2850 3750
 Text Label 2900 1150 0    50   ~ 0
 signal_button_reset
 Wire Wire Line
@@ -440,8 +430,6 @@ $EndComp
 Wire Wire Line
 	6750 1450 7000 1450
 Connection ~ 6750 1450
-Wire Wire Line
-	2850 3800 3600 3800
 $Comp
 L power:+5V #PWR?
 U 1 1 5DC05957
@@ -466,10 +454,6 @@ F 3 "" H 3600 4600 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4000 4900 3600 4900
-Wire Wire Line
-	3600 4900 2850 4900
-Wire Wire Line
-	2850 4400 2850 4900
 Connection ~ 3600 4900
 Wire Wire Line
 	3850 3700 3850 4250
@@ -488,10 +472,6 @@ Wire Wire Line
 	3850 4800 3850 5050
 Wire Wire Line
 	4000 4350 3600 4350
-Wire Wire Line
-	3200 4350 3600 4350
-Wire Wire Line
-	3200 4050 3200 4350
 Connection ~ 3600 4350
 Wire Wire Line
 	4300 2550 4450 2550
@@ -526,4 +506,12 @@ F 3 "" H 7300 1550 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7300 1450 7300 1550
+Text Label 2150 3800 0    50   ~ 0
+signal_button_set
+Wire Wire Line
+	2150 3800 3600 3800
+Wire Wire Line
+	2150 4350 3600 4350
+Wire Wire Line
+	2150 4900 3600 4900
 $EndSCHEMATC
