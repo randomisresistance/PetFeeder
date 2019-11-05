@@ -10,11 +10,11 @@
 #define LED_OFF LOW
 
 /*Pin setup*/
-int pumpPin   =   5;
-int selectPin =   6;
-int setPin    =   7; 
-int motorPin  =   8;
-int resetPin  =  29;
+short pumpPin   =   5;
+short selectPin =   6;
+short setPin    =   7; 
+short motorPin  =   8;
+short resetPin  =  29;
 
 /*Pin vars*/
 bool valSelectButton     = 0;   
@@ -44,14 +44,14 @@ void setup()
 
   /*Setup amount of servings depending on amount of animals in shed*/
   states_t state = START;
-  int led_state = LOW;
-  int blinks_shown = 0;
+  bool led_state = LOW;
+  short blinks_shown = 0;
   unsigned long time = millis();
   unsigned long last_button_poll = millis();
   unsigned long now;
 
-  int set_button = 0;
-  int select_button = 0;
+  bool set_button = 0;
+  bool select_button = 0;
 
   while (state != FINISH) {
     now = millis();
@@ -109,34 +109,7 @@ void setup()
       state = FINISH;
       // or just break;
     }
-  }
-
-
-  do
-  {
-    do
-    {
-      valSelectButton = 0;
-      AmountOfServings++;
-
-      if(AmountOfServings > MAX_ANIMALS_PER_SHED){
-        AmountOfServings = 1;
-        }
-
-      for(int i; AmountOfServings <= MAX_ANIMALS_PER_SHED; i++)
-      {
-       /*LED blinks for selected AmountOfServings times*/
-       digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-       delay(1000);                        // wait
-       digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-      }
-
-     valSelectButton = digitalRead(selectPin);  //read pin value for select
-    } while(valSelectButton != 1);
-
-    valSetButton = digitalRead(setPin);//read pin value for set
-  } while(valSetButton != 1);
-  
+  }  
   
   /*Reduce AVR328P to 1 Mhz for powersaving*/
   CLKPR = 0x80;
