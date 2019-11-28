@@ -1,13 +1,15 @@
-Reference, Quantity, Value, Footprint, Datasheet
-A1 ,1,Arduino_Nano_v3.x,Module:Arduino_Nano,http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf
-D2 ,1,D,Diode_THT:D_A-405_P7.62mm_Horizontal,~
-D3 D1 ,2,D_Zener,Diode_THT:D_A-405_P7.62mm_Horizontal,~
-J1 ,1,pump,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal,~
-J2 ,1,power,Connector_USB:USB_Mini-B_Lumberg_2486_01_Horizontal,~
-J3 ,1,button_set,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal,~
-J4 ,1,button_select,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal,~
-J5 ,1,button_reset,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal,~
-J6 ,1,motor,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Horizontal,~
-Q1 ,1,BUZ11,Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown,http://www.fairchildsemi.com/ds/BU/BUZ11.pdf
-R1 ,1,250,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal,~
-R2 R3 R4 R5 R6 ,5,10k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal,~
+"Id";"Designator";"Package";"Quantity";"Designation";"Supplier and ref";
+1;"C2";"C_Rect_L4.6mm_W3.0mm_P2.50mm_MKS02_FKP02";1;"100nF";;;
+2;"C1";"C_Radial_D4.0mm_H5.0mm_P1.50mm";1;"4.7uF";;;
+3;"D5,D4,D3,D1";"D_A-405_P7.62mm_Horizontal";4;"D_Zener";;;
+4;"A1";"Arduino_Nano";1;"Arduino_Nano_v3.x";;;
+5;"D2";"D_A-405_P7.62mm_Horizontal";1;"D";;;
+6;"J2";"USB_Mini-B_Lumberg_2486_01_Horizontal";1;"power";;;
+7;"J3";"PinHeader_1x02_P2.54mm_Horizontal";1;"button_set";;;
+8;"J4";"PinHeader_1x02_P2.54mm_Horizontal";1;"button_select";;;
+9;"J5";"PinHeader_1x02_P2.54mm_Horizontal";1;"button_reset";;;
+10;"J6";"PinHeader_1x03_P2.54mm_Horizontal";1;"motor";;;
+11;"R1";"R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal";1;"250";;;
+12;"R2,R3,R4,R5,R6";"R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal";5;"10k";;;
+13;"J1";"PinHeader_1x02_P2.54mm_Horizontal";1;"pump";;;
+14;"Q1";"TO-220-3_Horizontal_TabDown";1;"BUZ11";;;

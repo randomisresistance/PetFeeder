@@ -1,7 +1,7 @@
 // **** INCLUDES *****
 #include "LowPower.h"
 
-#define TWELVEHOURS 5400 // (60s*60s*12h)/8s = wainting cycles (MCU powers down for 8 seconds befor watchdogs wakes it up)
+#define TWELVEHOURS 5400 // (60s*60s*12h)/8s = wainting cycles (MCU powers down for 8 seconds befor watchdogs wakes it up again)
 #define MAX_ANIMALS_PER_SHED 9
 #define TIMEDIVIDER 1
 
@@ -16,13 +16,8 @@ short setPin    =   7;
 short motorPin  =   8;
 short resetPin  =  29;
 
-/*Pin vars*/
-bool valSelectButton     = 0;   
-bool valSetButton        = 0;
-
-
 /*Vars*/
-int TwelveHourCount   = 0;
+int TwelveHourCount    = 0;
 short AmountOfServings = 0;
 
 
@@ -37,7 +32,7 @@ void setup()
 {
   /*Set pins*/
   pinMode(selectPin, INPUT);    //Turn on Pin for select button  
-  pinMode(setPin, INPUT);        //Turn on Pin for set button
+  pinMode(setPin, INPUT);       //Turn on Pin for set button
   pinMode(pumpPin, OUTPUT);     //Turn on Pin for water pump
   pinMode(motorPin, OUTPUT);    //Turn on Pin for food dispenser
   pinMode(LED_BUILTIN, OUTPUT); //Turn on Blink LED to show the amout of servings
@@ -56,6 +51,7 @@ void setup()
   while (state != FINISH) {
     now = millis();
     switch(state) {
+      
       case START:
         // wait before blinking
         if(now - time > 1000) {
@@ -65,6 +61,7 @@ void setup()
           led_state = LED_OFF;
         }
         break;
+        
       case SHOW_VALUE:
         if (led_state == LED_OFF && now - time > 500) {
           time = now;
@@ -79,6 +76,7 @@ void setup()
           state = WAIT;
         }
         break;
+        
       case WAIT:
         break;
     }
@@ -88,7 +86,7 @@ void setup()
     // debounce
     if (now - last_button_poll > 100) {
       // buttons are low active
-      set_button = (digitalRead(set_button) == LOW);
+      set_button    = (digitalRead(set_button) == LOW);
       select_button = (digitalRead(selectPin) == LOW);
 
       if (set_button || select_button) {
