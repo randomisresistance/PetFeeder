@@ -1,9 +1,9 @@
 // **** INCLUDES *****
 #include "LowPower.h"
 
-#define TWELVEHOURS 5400 // (60s*60s*12h)/8s = wainting cycles (MCU powers down for 8 seconds befor watchdogs wakes it up again)
+#define TWELVEHOURS 5400*2 // (60s*60s*12h)/4s = wainting cycles (MCU powers down for 4 seconds before watchdogs wakes it up again)
 #define MAX_ANIMALS_PER_SHED 9
-#define TIMEDIVIDER 1
+#define TIMEDIVIDER 0x04 // Clock Prescale Divider (power of two, e.g., 0x04 -> divider=16)
 
 // sometimes HIGH means LED_OFF, so we use a define here
 #define LED_ON HIGH
@@ -43,6 +43,7 @@ void setup()
     short blinks_shown = 0;
     unsigned long time = millis();
     unsigned long last_button_poll = millis();
+    unsigned long last_pump_pulse = 0;
     unsigned long now;
 
     bool set_button = 0;
@@ -51,6 +52,21 @@ void setup()
     while (state != FINISH)
     {
         now = millis();
+        
+        // keep powerbank alive by briefly turning on pump every 4 seconds
+        // after reset, enable pump for 500ms to activate powerbank
+        if (now - last_pump_pulse > 4000)
+        {
+            digitalWrite(pumpPin, HIGH);
+            if (last_pump_pulse == 0)
+                delay(500);
+            else
+                delay(10);
+            digitalWrite(pumpPin, LOW);
+
+            last_pump_pulse = now;
+        }
+
         switch (state)
         {
 
