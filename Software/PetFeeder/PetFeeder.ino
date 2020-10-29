@@ -10,9 +10,9 @@
 #define LED_OFF LOW
 
 /*Pin setup*/
-short pumpPin = 5;
-short selectPin = 6;
-short setPin = 7;
+short pumpPin = 2;
+short selectPin = 4;
+short setPin = 3;
 short motorPin = 8;
 short resetPin = 29;
 
@@ -90,10 +90,10 @@ void setup()
         digitalWrite(LED_BUILTIN, led_state);
 
         // debounce
-        if (now - last_button_poll > 100)
+        if (now - last_button_poll > 500)
         {
             // buttons are low active
-            set_button = (digitalRead(set_button) == LOW);
+            set_button = (digitalRead(setPin) == LOW);
             select_button = (digitalRead(selectPin) == LOW);
 
             if (set_button || select_button)
@@ -117,50 +117,61 @@ void setup()
             state = FINISH;
             // or just break;
         }
+        set_button = 0;
+        select_button = 0;
+    }
+
+    for (int i=0; i<10; i++)
+    {
+        digitalWrite(LED_BUILTIN, LED_ON);        
+        delay(100);
+        digitalWrite(LED_BUILTIN, LED_OFF);
+        delay(100);
     }
 
     /*Reduce AVR328P to 1 Mhz for powersaving*/
-    CLKPR = 0x80;
+    CLKPR = 1 << 7;
     CLKPR = 0x04; /*divide by 0x04 = 16 (1 Mhz) | 0x02 = 8 (4 Mhz) | 0x01 = 4 (8 Mhz)*/
 }
 
 void loop()
 {
     /*ATmega328P maximum powersaving, complete power down for 8 seconds wakup by watchdog*/
-    LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+    LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);
     TwelveHourCount++;
+
+    /* Set clock speed back to 16 Mhz*/
+    CLKPR = 0x80;
+    CLKPR = 0x00;
+
+    digitalWrite(pumpPin, HIGH);
+    delay(5);
+    digitalWrite(pumpPin, LOW);
 
     if (TwelveHourCount >= TWELVEHOURS)
     {
-        /* Set clock speed back to 16 Mhz*/
-        CLKPR = 0x80;
-        CLKPR = 0x00;
 
         /*Dispense food and water in real scenario*/
-        digitalWrite(LED_BUILTIN, HIGH); // turn the LED on (HIGH is the voltage level)
-        delay(10000 / TIMEDIVIDER);      // wait for 10 second
-        digitalWrite(LED_BUILTIN, LOW);  // turn the LED off by making the voltage LOW
-        delay(1000 / TIMEDIVIDER);       // wait for a secon.
+        digitalWrite(LED_BUILTIN, LED_ON); // turn the LED on (HIGH is the voltage level)
+        delay(10000);      // wait for 10 second
+        digitalWrite(LED_BUILTIN, LED_OFF);  // turn the LED off by making the voltage LOW
+        delay(1000);       // wait for a secon.
         TwelveHourCount = 0;             //reset Twelve Hour Counter
 
         /* Set clock speed down to 1 Mhz*/
-        CLKPR = 0x80;
-        CLKPR = 0x04;
     }
 
     else
     {
         /*Do noting in real scenario*/
-        /* Set clock speed back to 16 Mhz*/
-        CLKPR = 0x80;
-        CLKPR = 0x00;
 
-        digitalWrite(LED_BUILTIN, HIGH); // turn the LED on (HIGH is the voltage level)
-        delay(500 / TIMEDIVIDER);        // wait for half second
-        digitalWrite(LED_BUILTIN, LOW);  // turn the LED off by making the voltage LOW
+        digitalWrite(LED_BUILTIN, LED_ON); // turn the LED on (HIGH is the voltage level)
+        delay(500);        // wait for half second
+        digitalWrite(LED_BUILTIN, LED_OFF);  // turn the LED off by making the voltage LOW
 
-        /* Set clock speed down to 1 Mhz*/
-        CLKPR = 0x80;
-        CLKPR = 0x04;
     }
+
+    /* Set clock speed down to 1 Mhz*/
+    CLKPR = 0x80;
+    CLKPR = TIMEDIVIDER;
 }
