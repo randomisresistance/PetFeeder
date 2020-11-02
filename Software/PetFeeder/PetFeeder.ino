@@ -1,9 +1,9 @@
 // **** INCLUDES *****
 #include "LowPower.h"
 
-#define TWELVEHOURS 5400*2 // (60s*60s*12h)/4s = wainting cycles (MCU powers down for 4 seconds before watchdogs wakes it up again)
+#define TWELVEHOURS 5400*2      // (60s*60s*12h)/4s = wainting cycles (MCU powers down for 4 seconds before watchdogs wakes it up again)
 #define MAX_ANIMALS_PER_SHED 9
-#define TIMEDIVIDER 0x04 // Clock Prescale Divider (power of two, e.g., 0x04 -> divider=16)
+#define TIMEDIVIDER 0x04        // Clock Prescale Divider (power of two, e.g., 0x04 -> divider=16)
 
 // sometimes HIGH means LED_OFF, so we use a define here
 #define LED_ON HIGH
@@ -147,7 +147,7 @@ void setup()
 
     /*Reduce AVR328P to 1 Mhz for powersaving*/
     CLKPR = 1 << 7;
-    CLKPR = 0x04; /*divide by 0x04 = 16 (1 Mhz) | 0x02 = 8 (4 Mhz) | 0x01 = 4 (8 Mhz)*/
+    CLKPR = TIMEDIVIDER; /*divide by 0x04 = 16 (1 Mhz) | 0x02 = 8 (4 Mhz) | 0x01 = 4 (8 Mhz)*/
 }
 
 void loop()
@@ -160,31 +160,27 @@ void loop()
     CLKPR = 0x80;
     CLKPR = 0x00;
 
+    // keep powerbank alive by briefly turning on pump every 4 seconds
     digitalWrite(pumpPin, HIGH);
-    delay(5);
+    delay(10);
     digitalWrite(pumpPin, LOW);
 
     if (TwelveHourCount >= TWELVEHOURS)
     {
-
         /*Dispense food and water in real scenario*/
-        digitalWrite(LED_BUILTIN, LED_ON); // turn the LED on (HIGH is the voltage level)
-        delay(10000);      // wait for 10 second
-        digitalWrite(LED_BUILTIN, LED_OFF);  // turn the LED off by making the voltage LOW
-        delay(1000);       // wait for a secon.
-        TwelveHourCount = 0;             //reset Twelve Hour Counter
-
-        /* Set clock speed down to 1 Mhz*/
+        digitalWrite(LED_BUILTIN, LED_ON);    // turn the LED on (HIGH is the voltage level)
+        delay(10000);                         // wait for 10 second /*TBD*/
+        digitalWrite(LED_BUILTIN, LED_OFF);   // turn the LED off by making the voltage LOW
+        delay(1000);                          // wait for a secon. /*TBD*/
+        TwelveHourCount = 0;                  //reset Twelve Hour Counter
     }
 
     else
     {
         /*Do noting in real scenario*/
-
-        digitalWrite(LED_BUILTIN, LED_ON); // turn the LED on (HIGH is the voltage level)
-        delay(500);        // wait for half second
-        digitalWrite(LED_BUILTIN, LED_OFF);  // turn the LED off by making the voltage LOW
-
+        digitalWrite(LED_BUILTIN, LED_ON);    // turn the LED on (HIGH is the voltage level)
+        delay(50);                            // wait for half second
+        digitalWrite(LED_BUILTIN, LED_OFF);   // turn the LED off by making the voltage LOW
     }
 
     /* Set clock speed down to 1 Mhz*/
